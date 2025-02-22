@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+    volumes:
+      - ./backend:/app
+    networks:
+      - pynodeai-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=http://backend:8000/api
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    networks:
+      - pynodeai-net
+
+networks:
+  pynodeai-net:
+    driver: bridge
