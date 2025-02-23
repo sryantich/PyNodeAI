@@ -1,0 +1,11 @@
+# FastAPI for building the API
+fastapi==0.115.8
+
+# Uvicorn is used as the ASGI server to run the FastAPI app
+uvicorn[standard]==0.22.0
+
+# PyTorch for model building and training
+torch==2.0.1
+
+# Optional: python-dotenv for configuration management (e.g., loading .env files)
+python-dotenv==1.0.0
